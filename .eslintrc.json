@@ -1,10 +1,26 @@
 {
+  // extends are sets of rules
   "extends": [
     // eslint: recommended is basic set of linting rules, not very opinionated
     "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    // prettier should be last
     "prettier"
   ],
-  "plugins": [],
+  // Turn on/off specific rules
+  "rules": {
+    // Turns off prop-types
+    // prop-types is a weak prop type checking React can perform
+    // Will be using typescript in project and prop-types are
+    // not useful when using typescript
+    "react/prop-types": 0,
+    // warns you if leave console logs in code
+    "no-console": 1
+  },
+  // plugins are new abilities for eslint
+  "plugins": ["react", "import", "jsx-a11y"],
   "parserOptions": {
     // latest version of ECMAScript at time of course recording
     "ecmaVersion": 2018,
@@ -21,5 +37,12 @@
     "browser": true,
     // Will be writing node so don't choke on things like HTTP, require etc.
     "node": true
+  },
+  "settings": {
+    "react": {
+      // Tells eslint to figure out which version of react the project is using
+      // via package.json
+      "version": "detect"
+    }
   }
 }
