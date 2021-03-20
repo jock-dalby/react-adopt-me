@@ -12,3 +12,4 @@
 - create and configure .eslintrc.json file
 - add lint script to package.json
 - add and configure .gitignore file
+- `npm i -D parcel-bundler` parcel is min config bundler. Super easy to use, no config required, just point at index.html and figures everything out for bundling ands running application.
