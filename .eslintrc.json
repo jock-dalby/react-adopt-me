@@ -1,0 +1,25 @@
+{
+  "extends": [
+    // eslint: recommended is basic set of linting rules, not very opinionated
+    "eslint:recommended",
+    "prettier"
+  ],
+  "plugins": [],
+  "parserOptions": {
+    // latest version of ECMAScript at time of course recording
+    "ecmaVersion": 2018,
+    // module means going to be using import and export
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    // Can use async/wait etc and other features incl. in es6
+    "es6": true,
+    // Means will be things like setTimeout and Document.window
+    "browser": true,
+    // Will be writing node so don't choke on things like HTTP, require etc.
+    "node": true
+  }
+}
