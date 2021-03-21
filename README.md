@@ -18,3 +18,7 @@
 ### Setup production dependencies
 
 - `npm i react react-dom`
+
+### JSX
+
+- Anything that is a JS expression (i.e. can be assigned to a variable) can be used inside of JSX. Example: Can use ternary (expression) but cannot use if (statement).
