@@ -17,10 +17,13 @@
     // not useful when using typescript
     "react/prop-types": 0,
     // warns you if leave console logs in code
-    "no-console": 1
+    "no-console": 1,
+    // 2 will make it error when rule not followed
+    "react-hooks/rules-of-hooks": 2,
+    "react-hooks/exhaustive-deps": 1
   },
   // plugins are new abilities for eslint
-  "plugins": ["react", "import", "jsx-a11y"],
+  "plugins": ["react", "import", "jsx-a11y", "react-hooks"],
   "parserOptions": {
     // latest version of ECMAScript at time of course recording
     "ecmaVersion": 2018,

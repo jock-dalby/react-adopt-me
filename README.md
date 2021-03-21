@@ -14,6 +14,7 @@
 - add and configure .gitignore file
 - `npm i -D parcel-bundler` parcel is min config bundler. Super easy to use, no config required, just point at index.html and figures everything out for bundling ands running application. Parcel has babel built in which will transformations of jsx.
 - `npm install -D babel-eslint eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react` => These tools are added to make sure our project understands React correctly. `babel-eslint` allows eslint be augmented by babel (the transpiler) so can better interpret React code. `eslint-plugin-import` gives new rules around importing and exporting. `eslint-plugin-jsx-a11y` (ally = accessibility) includes rules of things not to do for accessibility i.e. don't make div's clickable. `eslint-plugin-react` helps with some additional React rules for our project.
+- `npm i -D eslint-plugin-react-hooks` => official rules from the React team about writing hooks
 
 ### Setup production dependencies
 
