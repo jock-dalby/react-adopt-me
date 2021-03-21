@@ -4,6 +4,7 @@ import React, { useState } from "react";
 // When this is saved, Parcel will install and add to
 // dependencies list.
 import { ANIMALS } from "@frontendmasters/pet";
+import useDropdown from "./useDropdown";
 
 const SearchParams = () => {
   // useState is a hook. All hooks handle stateful logic and
@@ -13,9 +14,9 @@ const SearchParams = () => {
   // be inconsistent with conditionals/unpredictable logic. "react-hooks" has
   // been added to eslint config to error against this behaviour.
   const [location, setLocation] = useState("Seattle, WA");
-  const [animal, setAnimal] = useState("Dog");
-  const [breed, setBreed] = useState({});
+  const [animal, AnimalDropdown] = useDropdown("Animal", "Dog", ANIMALS);
   const [breeds, setBreeds] = useState([]);
+  const [breed, BreedDropdown] = useDropdown("Breed", "", breeds);
 
   return (
     <div className="search-params">
@@ -29,41 +30,8 @@ const SearchParams = () => {
             onChange={(e) => setLocation(e.target.value)}
           />
         </label>
-        <label htmlFor="animal">
-          Animal
-          {/* Screen readers may not call onChange event, so also need to include onBlur for
-          accessibility.  */}
-          <select
-            id="animal"
-            value={animal}
-            onChange={(e) => setAnimal(e.target.value)}
-            onBlur={(e) => setAnimal(e.target.value)}
-          >
-            <option>All</option>
-            {ANIMALS.map((a) => (
-              <option value={a} key={a}>
-                {a}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label htmlFor="breed">
-          Breed
-          <select
-            id="breed"
-            value={breed}
-            onChange={(e) => setBreed(e.target.value)}
-            onBlur={(e) => setBreed(e.target.value)}
-            disabled={!breeds.length}
-          >
-            <option>-- Not specified --</option>
-            {breeds.map((b) => (
-              <option value={b} key={b}>
-                {b}
-              </option>
-            ))}
-          </select>
-        </label>
+        <AnimalDropdown />
+        <BreedDropdown />
         <button>Submit</button>
       </form>
     </div>
