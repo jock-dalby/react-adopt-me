@@ -14,6 +14,8 @@ const SearchParams = () => {
   // been added to eslint config to error against this behaviour.
   const [location, setLocation] = useState("Seattle, WA");
   const [animal, setAnimal] = useState("Dog");
+  const [breed, setBreed] = useState({});
+  const [breeds, setBreeds] = useState([]);
 
   return (
     <div className="search-params">
@@ -29,6 +31,8 @@ const SearchParams = () => {
         </label>
         <label htmlFor="animal">
           Animal
+          {/* Screen readers may not call onChange event, so also need to include onBlur for
+          accessibility.  */}
           <select
             id="animal"
             value={animal}
@@ -36,8 +40,27 @@ const SearchParams = () => {
             onBlur={(e) => setAnimal(e.target.value)}
           >
             <option>All</option>
-            {ANIMALS.map((animal) => (
-              <option value={animal}>{animal}</option>
+            {ANIMALS.map((a) => (
+              <option value={a} key={a}>
+                {a}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label htmlFor="breed">
+          Breed
+          <select
+            id="breed"
+            value={breed}
+            onChange={(e) => setBreed(e.target.value)}
+            onBlur={(e) => setBreed(e.target.value)}
+            disabled={!breeds.length}
+          >
+            <option>-- Not specified --</option>
+            {breeds.map((b) => (
+              <option value={b} key={b}>
+                {b}
+              </option>
             ))}
           </select>
         </label>
