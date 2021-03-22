@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // @frontendmasters was not in package.json but Parcel is smart
 // enough to recognise that and go and grab from npm registry.
 // When this is saved, Parcel will install and add to
 // dependencies list.
-import { ANIMALS } from "@frontendmasters/pet";
+import pet, { ANIMALS } from "@frontendmasters/pet";
 import useDropdown from "./useDropdown";
 
 const SearchParams = () => {
@@ -16,7 +16,24 @@ const SearchParams = () => {
   const [location, setLocation] = useState("Seattle, WA");
   const [animal, AnimalDropdown] = useDropdown("Animal", "Dog", ANIMALS);
   const [breeds, setBreeds] = useState([]);
-  const [breed, BreedDropdown] = useDropdown("Breed", "", breeds);
+  const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
+
+  // useEffect will run AFTER the component has RENDERED for the very first time.
+  useEffect(
+    () => {
+      setBreeds([]);
+      setBreed("");
+      pet.breeds(animal).then(({ breeds }) => {
+        const breedNames = breeds.map(({ name }) => name);
+        setBreeds(breedNames);
+      }, console.error);
+    },
+    // List of dependencies this hook depends on
+    // setBreed and setBreeds will not change but eslint
+    // should require them to be in dependencies as used
+    // in the hook.
+    [animal, setBreed, setBreeds]
+  );
 
   return (
     <div className="search-params">
