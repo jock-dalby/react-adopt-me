@@ -16,7 +16,7 @@ const SearchParams = () => {
   const [location, setLocation] = useState("Seattle, WA");
   const [animal, AnimalDropdown] = useDropdown("Animal", "Dog", ANIMALS);
   const [breeds, setBreeds] = useState([]);
-  const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
+  const [_, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
 
   // useEffect will run AFTER the component has RENDERED for the very first time.
   useEffect(
@@ -32,6 +32,8 @@ const SearchParams = () => {
     // setBreed and setBreeds will not change but eslint
     // should require them to be in dependencies as used
     // in the hook.
+    // To set useEffect hook to run only once, can pass in []
+    // as list of dependencies.
     [animal, setBreed, setBreeds]
   );
 
