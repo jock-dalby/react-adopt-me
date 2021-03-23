@@ -15,7 +15,7 @@ const SearchParams = () => {
   // be inconsistent with conditionals/unpredictable logic. "react-hooks" has
   // been added to eslint config to error against this behaviour.
   const [location, setLocation] = useState("Seattle, WA");
-  const [animal, AnimalDropdown] = useDropdown("Animal", "Dog", ANIMALS);
+  const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
   const [breeds, setBreeds] = useState([]);
   const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
   const [pets, setPets] = useState([]);
