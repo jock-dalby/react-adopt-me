@@ -17,6 +17,7 @@
 - `npm i -D eslint-plugin-react-hooks` => official rules from the React team about writing hooks
 - `https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en` => React Developer Tools for Chrome
 - `npm install -D cross-env` => see https://btholt.github.io/complete-intro-to-react-v5/effects
+- `npm install @reach/router` => https://btholt.github.io/complete-intro-to-react-v5/reach-router => Reach Router is a new router from one of the creators of React Router, Ryan Florence. Ryan took much of his learnings from making React Router and made a simpler, more accessible, and easier to accomplish advanced tasks like animated transitions while still maintaining a similar API to React Router.
 
 ### Setup production dependencies
 

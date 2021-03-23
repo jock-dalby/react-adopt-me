@@ -1,6 +1,8 @@
 import React from "react";
 import { render } from "react-dom";
+import { Router } from "@reach/router";
 import SearchParams from "./SearchParams";
+import Details from "./Details";
 
 const App = () => {
   return (
@@ -11,7 +13,15 @@ const App = () => {
     <React.StrictMode>
       <div id="app-test-id">
         <h1>Adopt Me!</h1>
-        <SearchParams />
+        <Router>
+          {/* 
+              React Router will render all components with paths that match.
+              React Router will only render 1 component, the one with the path that matches the most.
+              Order of components below does not matter.
+          */}
+          <SearchParams path="/" />
+          <Details path="/details/:id" />
+        </Router>
       </div>
     </React.StrictMode>
   );
