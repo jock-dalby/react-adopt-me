@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import { Router } from "@reach/router";
+import { Router, Link } from "@reach/router";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
 
@@ -12,7 +12,9 @@ const App = () => {
     // that do not use latest features.
     <React.StrictMode>
       <div id="app-test-id">
-        <h1>Adopt Me!</h1>
+        <header>
+          <Link to="/">Adopt Me!</Link>
+        </header>
         <Router>
           {/* 
               React Router will render all components with paths that match.
