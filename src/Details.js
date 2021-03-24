@@ -31,7 +31,22 @@ class Details extends React.Component {
   // All class components MUST have a render method.
   // The render method will work much like regular function components.
   render() {
-    return;
+    if (this.state.loading) {
+      return <h1>loading ...</h1>;
+    }
+
+    const { name, animal, breed, location, description } = this.state;
+
+    return (
+      <div className="details">
+        <div>
+          <h1>{name}</h1>
+          <h2>{`${animal} - ${breed} - ${location}`}</h2>
+          <button>Adopt {name}</button>
+          <p>{description}</p>
+        </div>
+      </div>
+    );
   }
 }
 
