@@ -1,12 +1,38 @@
 import React from "react";
+import pet from "@frontendmasters/pet";
 
-const Details = (props) => {
-  return (
-    // Great way to see all props that are coming in from router in the browser
-    <pre>
-      <code>{JSON.stringify(props, null, 4)}</code>
-    </pre>
-  );
-};
+// props is information you get handed down from parent class/component.
+// state is self-contained within the class and can be mutated.
+
+// regular js component
+class Details extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: true,
+    };
+  }
+  // Runs once on first init
+  componentDidMount() {
+    // arrow functions do not create new contexts and so 'this' is accessible
+    pet.animal(this.props.id).then(({ animal }) => {
+      this.setState({
+        name: animal.name,
+        animal: animal.type,
+        location: `${animal.contact.address.city}, ${animal.contact.address.state}`,
+        description: animal.description,
+        media: animal.photos,
+        breed: animal.breeds.primary,
+        loading: false,
+      });
+    }, console.error);
+  }
+  // All class components MUST have a render method.
+  // The render method will work much like regular function components.
+  render() {
+    return;
+  }
+}
 
 export default Details;
