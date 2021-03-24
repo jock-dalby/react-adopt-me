@@ -6,13 +6,18 @@ import pet from "@frontendmasters/pet";
 
 // regular js component
 class Details extends React.Component {
-  constructor(props) {
-    super(props);
+  // Old way of defining initial state
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-      loading: true,
-    };
-  }
+  //   this.state = {
+  //     loading: true,
+  //   };
+  // }
+
+  // Can now define initial state as below
+  state = { loading: true };
+
   // Runs once on first init
   componentDidMount() {
     // arrow functions do not create new contexts and so 'this' is accessible
