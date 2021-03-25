@@ -20,6 +20,19 @@ class Carousel extends React.Component {
     return { photos };
   }
 
+  // Must be arrow function to get right lexical
+  // context.
+  handleIndexClick = (e) => {
+    // dataset is not on React api, is on DOM api.
+    // It allows you to get the data on HTML tag.
+    // Note: We are expecting a Number but anything that
+    // comes back from DOM will be a String, so needs
+    // to be coerced into a Number.
+    this.setState({
+      activeIndex: +e.target.dataset.index,
+    });
+  };
+
   render() {
     const { photos, activeIndex } = this.state;
     return (
