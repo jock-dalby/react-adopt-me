@@ -1,6 +1,7 @@
 import React from "react";
 import Carousel from "./Carousel";
 import pet from "@frontendmasters/pet";
+import ErrorBoundary from "./ErrorBoundary";
 
 // props is information you get handed down from parent class/component.
 // state is self-contained within the class and can be mutated.
@@ -57,4 +58,11 @@ class Details extends React.Component {
   }
 }
 
-export default Details;
+export default function DetailsWithErrorBoundary(props) {
+  return (
+    <ErrorBoundary>
+      {/* if did not spread and went props={props}, then inside Details, would be this.props.props */}
+      <Details {...props} />
+    </ErrorBoundary>
+  );
+}
