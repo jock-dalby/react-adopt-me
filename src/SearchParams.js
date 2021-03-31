@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 // @frontendmasters was not in package.json but Parcel is smart
 // enough to recognise that and go and grab from npm registry.
 // When this is saved, Parcel will install and add to
@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 import pet, { ANIMALS } from "@frontendmasters/pet";
 import useDropdown from "./useDropdown";
 import Results from "./Results";
+import ThemeContext from './ThemeContext';
 
 const SearchParams = () => {
   // useState is a hook. All hooks handle stateful logic and
@@ -19,6 +20,7 @@ const SearchParams = () => {
   const [breeds, setBreeds] = useState([]);
   const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
   const [pets, setPets] = useState([]);
+  const [theme] = useContext(ThemeContext);
 
   async function requestPets() {
     const { animals } = await pet.animals({
@@ -68,7 +70,8 @@ const SearchParams = () => {
         </label>
         <AnimalDropdown />
         <BreedDropdown />
-        <button>Submit</button>
+        {/* button is coloured blue by where themeHook is passed into to ThemeContext in App.js */}
+        <button style={{ backgroundColor: theme }}>Submit</button>
       </form>
       <Results pets={pets} />
     </div>

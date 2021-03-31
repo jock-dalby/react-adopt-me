@@ -15,6 +15,7 @@ const App = () => {
     // that do not use latest features.
     <React.StrictMode>
       {/* now everything in global app state has access to themeHook */}
+      {/* To use useContext hook, the context provider MUST be a parent */}
       <ThemeContext.Provider value={themeHook}>
         <div id="app-test-id">
           <header>
