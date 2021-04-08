@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from "./Carousel";
 import pet from "@frontendmasters/pet";
 import ErrorBoundary from "./ErrorBoundary";
+import ThemeContext from "./ThemeContext";
 
 // props is information you get handed down from parent class/component.
 // state is self-contained within the class and can be mutated.
@@ -50,7 +51,12 @@ class Details extends React.Component {
         <div>
           <h1>{name}</h1>
           <h2>{`${animal} - ${breed} - ${location}`}</h2>
-          <button>Adopt {name}</button>
+          <ThemeContext.Consumer>
+            {(themeHook) => (
+              // themeHook[0] is theme, themeHook[1] is setTheme
+              <button style={{ backgroundColor: themeHook[0] }}>Adopt {name}</button>
+            )}
+          </ThemeContext.Consumer>
           <p>{description}</p>
         </div>
       </div>

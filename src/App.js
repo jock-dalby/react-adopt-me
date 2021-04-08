@@ -7,7 +7,7 @@ import ThemeContext from "./ThemeContext";
 
 const App = () => {
   // themeHook is array [initialState, updaterFunc]
-  const themeHook = useState('blue')
+  const themeHook = useState('peru')
   return (
     // StrictMode can be shipped to production. Does not render anything or
     // increase bundle size. It will just give warnings if use any unstable
